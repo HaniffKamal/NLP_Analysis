@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "behavioral-analyzer"
+version = "0.1.0"
+description = "Primary context, sentiment, emotion, and anomaly scoring for ASR transcripts."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Sentiment Team"}
+]
+dependencies = [
+  "torch>=2.0",
+  "transformers>=4.30",
+  "pandas>=2.0",
+  "accelerate>=0.20",
+]
+
+[project.scripts]
+behavioral-analyzer = "behavioral_analyzer_cli:main"
+
+[tool.setuptools]
+py-modules = ["behavioral_analyzer", "behavioral_analyzer_cli"]
