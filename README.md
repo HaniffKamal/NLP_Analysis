@@ -14,7 +14,7 @@ The behavioral analyzer consumes utterance-level transcripts and sequentially ro
 
 ```mermaid
 graph TD
-    A[ASR Transcript Input<br>CSV/JSON/Parquet] --> B[Validation & Preprocessing]
+    A[Input<br>CSV/JSON/Parquet] --> B[Validation & Preprocessing]
     B --> C[Sentiment Polarity Classifier<br>DistilBERT Sentiment Student]
     B --> D[Emotion Classifier<br>DistilRoBERTa Emotion]
     B --> E[Context & Intent Classifier<br>BART Zero-Shot]
