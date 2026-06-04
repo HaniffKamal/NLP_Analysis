@@ -1,0 +1,11 @@
+LICENSE
+README.md
+behavioral_analyzer.py
+behavioral_analyzer_cli.py
+pyproject.toml
+behavioral_analyzer.egg-info/PKG-INFO
+behavioral_analyzer.egg-info/SOURCES.txt
+behavioral_analyzer.egg-info/dependency_links.txt
+behavioral_analyzer.egg-info/entry_points.txt
+behavioral_analyzer.egg-info/requires.txt
+behavioral_analyzer.egg-info/top_level.txt

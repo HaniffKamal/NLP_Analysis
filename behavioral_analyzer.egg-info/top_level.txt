@@ -1,0 +1,2 @@
+behavioral_analyzer
+behavioral_analyzer_cli

@@ -1,0 +1,2 @@
+[console_scripts]
+behavioral-analyzer = behavioral_analyzer_cli:main

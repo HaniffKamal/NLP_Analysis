@@ -1,0 +1,70 @@
+Metadata-Version: 2.4
+Name: behavioral-analyzer
+Version: 0.1.0
+Summary: Primary context, sentiment, emotion, and anomaly scoring for ASR transcripts.
+Author: Sentiment Team
+License: MIT
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch>=2.0
+Requires-Dist: transformers>=4.30
+Requires-Dist: pandas>=2.0
+Requires-Dist: accelerate>=0.20
+Dynamic: license-file
+
+# NLP Behavioral Analysis
+
+This repository implements the **NLP Behavioral Analysis** layer for audio analysis and anomaly detection pipelines. It consumes utterance-level ASR/diarization transcripts and enriches them with:
+
+- **Primary Context**: Classifier for conversation-level intent (e.g. Greeting, Financial Wire Transfer, Tech Support).
+- **Sentiment Polarity**: Utterance-level and conversation-level sentiment scoring.
+- **Emotion Classes**: Real-time classification of anger, fear, sadness, joy, and neutrality.
+- **Behavioral Anomaly Scores**: Heuristic indicators pointing to sudden spikes in emotion, pressure, or urgency.
+
+## Repository Layout
+
+- [behavioral_analyzer.py](file:///home/isp/Desktop/Sentiment/NLP/behavioral_analyzer.py): Core modular analyzer class and rules.
+- [behavioral_analyzer_cli.py](file:///home/isp/Desktop/Sentiment/NLP/behavioral_analyzer_cli.py): CLI interface to run analysis on transcripts (JSON/JSONL/CSV/Parquet).
+- [demo_app.py](file:///home/isp/Desktop/Sentiment/NLP/demo_app.py): Interactive Streamlit web interface.
+- [requirements.txt](file:///home/isp/Desktop/Sentiment/NLP/requirements.txt): Runtime dependencies.
+
+## Install
+
+```bash
+cd /home/isp/Desktop/Sentiment/NLP
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -e .
+```
+
+## Python Usage
+
+```python
+import pandas as pd
+from behavioral_analyzer import BehavioralAnalyzer, BehavioralAnalyzerConfig
+
+# Load your ASR transcript data containing: start_time, end_time, speaker_id, transcript
+df = pd.DataFrame([
+    {"start_time": 0.0, "end_time": 4.5, "speaker_id": "SPK1", "transcript": "Hello, how can I help you today?"},
+    {"start_time": 5.0, "end_time": 10.2, "speaker_id": "SPK2", "transcript": "My account is blocked and I need to transfer money immediately!"}
+])
+
+analyzer = BehavioralAnalyzer(BehavioralAnalyzerConfig())
+result = analyzer.analyze_dataframe(df)
+print(result)
+```
+
+## CLI Usage
+
+```bash
+behavioral-analyzer --input transcript.json --output enriched_output.json
+```
+
+## GUI Usage
+
+```bash
+streamlit run demo_app.py
+```
